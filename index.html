@@ -5,26 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/b4119e1337.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Snack Bar</title>
   </head>
   <body>
     <div class="buttons">
-      <button onclick="showSnackBar(successMsg)">Success</button>
-      <button onclick="showSnackBar(errorMsg)">Error</button>
-      <button onclick="showSnackBar(invalidMsg)">Invalid</button>
+      <button onclick="showSnackBar(successMsg, successIcon)">Success</button>
+      <button onclick="showSnackBar(errorMsg, errorIcon)">Error</button>
+      <button onclick="showSnackBar(invalidMsg, invalidIcon)">Invalid</button>
     </div>
     <div id="snackBarBox"></div>
     <script>
       let snackBarBox = document.getElementById('snackBarBox');
+      let successIcon = '<i class="fa-sharp fa-solid fa-circle-check"></i>';
       let successMsg = 'Successfully submitted';
+      let errorIcon = '<i class="fa-solid fa-circle-xmark"></i>';
       let errorMsg = 'Please fix the error!';
+      let invalidIcon = '<i class="fa-solid fa-circle-exclamation"></i>';
       let invalidMsg = 'Invalid input, check again';
 
-      function showSnackBar(msg) {
+      function showSnackBar(msg = '', icon = '') {
         let snackBar = document.createElement('div');
         snackBar.classList.add('snackBar');
-        snackBar.innerHTML = msg;
+        snackBar.innerHTML = `${icon} ${msg}`;
         snackBarBox.appendChild(snackBar);
+
+        if (msg.includes('Success')) {
+          snackBar.classList.add('success');
+        }
+        if (msg.includes('error')) {
+          snackBar.classList.add('error');
+        }
+        if (msg.includes('Invalid')) {
+          snackBar.classList.add('invalid');
+        }
+
+        setTimeout(() => {
+          snackBar.remove();
+        }, 5000);
       }
     </script>
   </body>
