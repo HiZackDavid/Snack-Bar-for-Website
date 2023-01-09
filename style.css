@@ -24,7 +24,7 @@ body {
   cursor: pointer;
 }
 
-#snackbar {
+#snackBarBox {
   position: absolute;
   bottom: 30px;
   right: 30px;
@@ -33,4 +33,15 @@ body {
   flex-direction: column;
   overflow: hidden;
   padding: 20px;
+}
+
+.snackBar {
+  width: 400px;
+  height: 80px;
+  background-color: #fff;
+  font-weight: 500;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
 }

@@ -9,10 +9,23 @@
   </head>
   <body>
     <div class="buttons">
-      <button>Success</button>
-      <button>Error</button>
-      <button>Invalid</button>
+      <button onclick="showSnackBar(successMsg)">Success</button>
+      <button onclick="showSnackBar(errorMsg)">Error</button>
+      <button onclick="showSnackBar(invalidMsg)">Invalid</button>
     </div>
-    <div id="snackbar"></div>
+    <div id="snackBarBox"></div>
+    <script>
+      let snackBarBox = document.getElementById('snackBarBox');
+      let successMsg = 'Successfully submitted';
+      let errorMsg = 'Please fix the error!';
+      let invalidMsg = 'Invalid input, check again';
+
+      function showSnackBar(msg) {
+        let snackBar = document.createElement('div');
+        snackBar.classList.add('snackBar');
+        snackBar.innerHTML = msg;
+        snackBarBox.appendChild(snackBar);
+      }
+    </script>
   </body>
 </html>
